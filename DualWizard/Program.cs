@@ -8,7 +8,7 @@ wizard1.Attack(Wizard2);
 Wizard2.Attack(wizard1);
 wizard1.Attack(Wizard2);
 
-
+Wizard2.Heal();
 
 wizard1.ShowStats();
 Wizard2.ShowStats();
@@ -39,7 +39,17 @@ public class Wizard
 
     }
 
-    
+    public void Heal()
+    {
+        Mana += 10;
+        if (Mana > 100)
+            Mana = 100;
+
+        Console.WriteLine($"{Name} Melakukan Heal");
+        Console.WriteLine($"Mana Sekarang: {Mana}");
+        Console.WriteLine();
+    }
+
     public void ShowStats()
     {
         Console.WriteLine($"Nama Wizard : {Name}");
