@@ -1,20 +1,46 @@
 ﻿using System.ComponentModel.Design;
 
-Wizard wizard1 = new Wizard("jhonny", 20);
-Wizard Wizard2 = new Wizard("Evil Jhonny", 10);
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Wizard wizard1 = new Wizard("jhonny", 20);
+        Wizard Wizard2 = new Wizard("Evil Jhonny", 10);
 
-wizard1.ShowStats();
-Wizard2.ShowStats();
+        wizard1.ShowStats();
+        Wizard2.ShowStats();
 
-wizard1.Attack(Wizard2);
-Wizard2.Attack(wizard1);
-wizard1.Attack(Wizard2);
+        string Pilihan;
 
-Wizard2.Heal();
-wizard1.Blast(Wizard2);
+        while (true)
+        {
 
-wizard1.ShowStats();
-Wizard2.ShowStats();
+            Console.Clear();
+
+            Console.WriteLine($"1. {wizard1} Menyerang {Wizard2}");
+            Console.WriteLine($"2. {Wizard2} Menyerang {wizard1}");
+            Console.WriteLine($"3. {wizard1} Melakukan Heal");
+            Console.WriteLine($"4. {Wizard2} Melakukan Heal");
+            Console.WriteLine($"5. {wizard1} Menembak {Wizard2}");
+            Console.WriteLine($"6. {Wizard2} Menembak {wizard1}");
+
+            Console.WriteLine("\nPilihanmu [1/2/3/4/5/6]");
+            Pilihan = Console.ReadLine();
+
+            if (Pilihan == "1") wizard1.Attack(Wizard2);
+            else if (Pilihan == "2") Wizard2.Attack(wizard1);
+            else if (Pilihan == "3") wizard1.Heal();
+            else if (Pilihan == "4") wizard1.Heal();
+            else if (Pilihan == "5") wizard1.Blast(Wizard2);
+            else if (Pilihan == "6") Wizard2.Blast(wizard1);
+            else { Console.WriteLine("sorry pilihan itu tidak valid"); }
+
+        }
+
+        wizard1.ShowStats();
+        Wizard2.ShowStats(); 
+    }
+}
 
 public class Wizard
 {
